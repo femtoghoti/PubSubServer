@@ -24,16 +24,18 @@ class MatchProtocol(basic.LineReceiver):
             self.transport.write('{"Tx" :%i, "Rx": %i}' % (base_port,
                                                            base_port + 1))
             self.factory.toggle_new_match()
-            self.transport.loseConnection()
+            # self.transport.loseConnection()
+            self.factory.push_to_queue(self)
             reactor.listenTCP(base_port, PubFactory())
             reactor.listenTCP(base_port + 1, PubFactory())
         else:
             base_port = self.factory.get_base_port()
             self.transport.write('{"Tx" :%i, "Rx": %i}' % (base_port + 1,
                                                            base_port))
+            self.factory.push_to_queue(self)
             self.factory.inc_base_port()
             self.factory.toggle_new_match()
-            self.transport.loseConnection()
+            # self.transport.loseConnection()
 
 
 class MatchFactory(protocol.ServerFactory):
@@ -41,8 +43,7 @@ class MatchFactory(protocol.ServerFactory):
     def __init__(self):
         self.base_port = 6000
         self.new_match = True
-
-    protocol = MatchProtocol
+        self.match_queue = []
 
     def get_base_port(self):
         return self.base_port
@@ -58,6 +59,17 @@ class MatchFactory(protocol.ServerFactory):
             self.new_match = False
         else:
             self.new_match = True
+
+    def push_to_queue(self, protocol):
+        self.match_queue.append(protocol)
+        if len(self.match_queue) > 1:
+            player0 = self.match_queue.pop()
+            player1 = self.match_queue.pop()
+            player0.transport.loseConnection()
+            player1.transport.loseConnection()
+
+
+    protocol = MatchProtocol
 
 
 if __name__ == '__main__':
