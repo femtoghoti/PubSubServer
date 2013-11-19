@@ -14,7 +14,7 @@ class PubProtocol(basic.LineReceiver):
 
     def lineReceived(self, line):
         for c in self.factory.clients:
-            c.sendLine("<{}> {}".format(self.transport.getHost(), line))
+            c.sendLine(line)
 
 
 class PubFactory(protocol.Factory):
