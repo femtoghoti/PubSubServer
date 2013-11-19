@@ -24,7 +24,6 @@ class MatchProtocol(basic.LineReceiver):
             self.transport.write('{"Tx" :%i, "Rx": %i}' % (base_port,
                                                            base_port + 1))
             self.factory.toggle_new_match()
-            # self.transport.loseConnection()
             self.factory.push_to_queue(self)
             reactor.listenTCP(base_port, PubFactory())
             reactor.listenTCP(base_port + 1, PubFactory())
@@ -35,7 +34,6 @@ class MatchProtocol(basic.LineReceiver):
             self.factory.push_to_queue(self)
             self.factory.inc_base_port()
             self.factory.toggle_new_match()
-            # self.transport.loseConnection()
 
 
 class MatchFactory(protocol.ServerFactory):
