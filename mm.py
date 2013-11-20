@@ -1,9 +1,9 @@
-"""Match Maker (MM) is a simple program generates channels and distributes
-   This server simply spawns instances of the kommunication_server and then
-   gives the ip and port to the client for the two connections.
+"""Match Maker (MM) is a simple program generates channels and distributes them to clients.
+   Once a match has been made the connection to the clients is closed.  It is on the client to
+   connect to the channel and take approperate action.
 
 Usage:
- match_maker.py [--port=<port>]
+ mm.py [--port=<port>]
 
 Options:
   -h --help      Show this screen.
