@@ -43,15 +43,15 @@ class MatchFactory(protocol.ServerFactory):
             player0 = self.clients.pop()
             player1 = self.clients.pop()
 
+            # spin up the rooms on the ports
+            reactor.listenTCP(self.base_port, PubFactory())
+            reactor.listenTCP(self.base_port + 1, PubFactory())
+
             # give the clients their port numbers.
             player0.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port,
                                                               self.base_port + 1))
             player1.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port + 1,
                                                               self.base_port))
-            # spin up the rooms on the above ports
-            reactor.listenTCP(self.base_port, PubFactory())
-            reactor.listenTCP(self.base_port + 1, PubFactory())
-
             # ready the next set of ports.
             self.inc_base_port()
 
