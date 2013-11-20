@@ -19,12 +19,17 @@ from PubSubServer.kommunication_server import PubFactory
 class MatchProtocol(basic.LineReceiver):
 
     def connectionMade(self):
-        self.factory.push_to_queue(self)
+        self.factory.clients.add(self)
+        self.factory.attempt_to_make_a_match()
+
+    def connectionLost(self, reason):
+        self.factory.clients.remove(self)
 
 
 class MatchFactory(protocol.ServerFactory):
 
     def __init__(self):
+        self.clients = set()
         self.base_port = 6000
         self.new_match = True
         self.match_queue = []
@@ -37,23 +42,28 @@ class MatchFactory(protocol.ServerFactory):
 
     def get_new_match(self):
         return self.new_match
-1
-    def push_to_queue(self, protocol):
-        self.match_queue.append(protocol)
-        if len(self.match_queue) > 1:
-            player0 = self.match_queue.pop()
-            player1 = self.match_queue.pop()
 
+    def attempt_to_make_a_match(self):
+        if len(self.clients) > 1:
+            # remove the top two clients for pairing
+            player0 = self.clients.pop()
+            player1 = self.clients.pop()
+
+            # give the clients their port numbers.
             player0.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port,
                                                               self.base_port + 1))
             player1.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port + 1,
                                                               self.base_port))
-            self.inc_base_port()
+            # spin up the rooms on the above ports
             reactor.listenTCP(self.base_port, PubFactory())
             reactor.listenTCP(self.base_port + 1, PubFactory())
+
+            # ready the next set of ports.
+            self.inc_base_port()
+
+            # close the connections letting the clients know they are paired and ready to go.
             player0.transport.loseConnection()
             player1.transport.loseConnection()
-
 
     protocol = MatchProtocol
 
