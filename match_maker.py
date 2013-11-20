@@ -19,21 +19,7 @@ from PubSubServer.kommunication_server import PubFactory
 class MatchProtocol(basic.LineReceiver):
 
     def connectionMade(self):
-        if self.factory.get_new_match():
-            base_port = self.factory.get_base_port()
-            self.transport.write('{"Tx" :%i, "Rx": %i}' % (base_port,
-                                                           base_port + 1))
-            self.factory.toggle_new_match()
-            self.factory.push_to_queue(self)
-            reactor.listenTCP(base_port, PubFactory())
-            reactor.listenTCP(base_port + 1, PubFactory())
-        else:
-            base_port = self.factory.get_base_port()
-            self.transport.write('{"Tx" :%i, "Rx": %i}' % (base_port + 1,
-                                                           base_port))
-            self.factory.push_to_queue(self)
-            self.factory.inc_base_port()
-            self.factory.toggle_new_match()
+        self.factory.push_to_queue(self)
 
 
 class MatchFactory(protocol.ServerFactory):
@@ -51,18 +37,20 @@ class MatchFactory(protocol.ServerFactory):
 
     def get_new_match(self):
         return self.new_match
-
-    def toggle_new_match(self):
-        if self.new_match:
-            self.new_match = False
-        else:
-            self.new_match = True
-
+1
     def push_to_queue(self, protocol):
         self.match_queue.append(protocol)
         if len(self.match_queue) > 1:
             player0 = self.match_queue.pop()
             player1 = self.match_queue.pop()
+
+            player0.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port,
+                                                              self.base_port + 1))
+            player1.transport.write('{"Tx" :%i, "Rx": %i}' % (self.base_port + 1,
+                                                              self.base_port))
+            self.inc_base_port()
+            reactor.listenTCP(self.base_port, PubFactory())
+            reactor.listenTCP(self.base_port + 1, PubFactory())
             player0.transport.loseConnection()
             player1.transport.loseConnection()
 
