@@ -34,14 +34,8 @@ class MatchFactory(protocol.ServerFactory):
         self.new_match = True
         self.match_queue = []
 
-    def get_base_port(self):
-        return self.base_port
-
     def inc_base_port(self):
         self.base_port += 2
-
-    def get_new_match(self):
-        return self.new_match
 
     def attempt_to_make_a_match(self):
         if len(self.clients) > 1:
