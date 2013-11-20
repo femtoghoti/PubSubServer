@@ -2,6 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c88202b-ddad-4d86-89ad-3a22fa049637" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/PubSubServer.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/other.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/testrunner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="PubSubServer.iws" />
@@ -9,7 +18,7 @@
     <file path="/requirements.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384815471783" ignored="false" />
     <file path="/chat.html" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384812011357" ignored="false" />
     <file path="/test_gevent_server.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384813635065" ignored="false" />
-    <file path="/Dummy.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384973306338" ignored="false" />
+    <file path="/Dummy.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384973332664" ignored="false" />
     <file path="$PROJECT_DIR$/../gevent-socketio/requirements.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384814391749" ignored="false" />
     <file path="$PROJECT_DIR$/../manhattan/fabfile.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384821582326" ignored="false" />
     <file path="$PROJECT_DIR$/../manhattan/manhattan/views/current_sales.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384821582326" ignored="false" />
@@ -470,7 +479,11 @@
       <created>1384973309171</created>
       <updated>1384973309171</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="removed this file so I could modify .gitignore.">
+      <created>1384973334614</created>
+      <updated>1384973334614</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -541,7 +554,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed MM into a module.&#10;Moved MagicNumbers into conifg constants." />
+    <option name="LAST_COMMIT_MESSAGE" value="removed this file so I could modify .gitignore." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -563,6 +576,7 @@
     <MESSAGE value="removed unused functions" />
     <MESSAGE value="created the &quot;chat rooms&quot; before Tx'ing the port numbers." />
     <MESSAGE value="Changed MM into a module.&#10;Moved MagicNumbers into conifg constants." />
+    <MESSAGE value="removed this file so I could modify .gitignore." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
