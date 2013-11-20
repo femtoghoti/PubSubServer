@@ -1,5 +1,4 @@
 *.py[cod]
-.idea
 
 # C extensions
 *.so
@@ -35,6 +34,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+#PyCharm files
+.idea
 
 # project configs
 PubSubServer/config/local_settings.py

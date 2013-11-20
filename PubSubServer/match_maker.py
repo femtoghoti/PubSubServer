@@ -19,8 +19,6 @@ class MatchFactory(protocol.ServerFactory):
     def __init__(self):
         self.clients = set()
         self.base_port = STARTING_PORT
-        self.new_match = True
-        self.match_queue = []
 
     def inc_base_port(self):
         self.base_port += 2
