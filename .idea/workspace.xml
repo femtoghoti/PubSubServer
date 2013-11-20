@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c88202b-ddad-4d86-89ad-3a22fa049637" name="Default" comment="removed unsed functions">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PubSubServer/config/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PubSubServer/match_maker.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mm.py" />
+    <list default="true" id="7c88202b-ddad-4d86-89ad-3a22fa049637" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="PubSubServer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/requirements.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384815471783" ignored="false" />
     <file path="/chat.html" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384812011357" ignored="false" />
     <file path="/test_gevent_server.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384813635065" ignored="false" />
-    <file path="/Dummy.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384973048060" ignored="false" />
+    <file path="/Dummy.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384973306338" ignored="false" />
     <file path="$PROJECT_DIR$/../gevent-socketio/requirements.txt" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384814391749" ignored="false" />
     <file path="$PROJECT_DIR$/../manhattan/fabfile.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384821582326" ignored="false" />
     <file path="$PROJECT_DIR$/../manhattan/manhattan/views/current_sales.py" changelist="7c88202b-ddad-4d86-89ad-3a22fa049637" time="1384821582326" ignored="false" />
@@ -470,14 +466,18 @@
       <created>1384909311707</created>
       <updated>1384909311707</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed MM into a module.&#10;Moved MagicNumbers into conifg constants.">
+      <created>1384973309171</created>
+      <updated>1384973309171</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1779" height="1483" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18341893" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18341893" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294204" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991196" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -489,7 +489,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27351415" sideWeight="0.8165811" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27351415" sideWeight="0.8165811" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -541,7 +541,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="created the &quot;chat rooms&quot; before Tx'ing the port numbers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed MM into a module.&#10;Moved MagicNumbers into conifg constants." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -562,6 +562,7 @@
     <MESSAGE value="Accounted for a client disconnecting before a match was made." />
     <MESSAGE value="removed unused functions" />
     <MESSAGE value="created the &quot;chat rooms&quot; before Tx'ing the port numbers." />
+    <MESSAGE value="Changed MM into a module.&#10;Moved MagicNumbers into conifg constants." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
